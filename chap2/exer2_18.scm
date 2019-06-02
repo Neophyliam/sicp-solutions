@@ -1,0 +1,10 @@
+(define (reverse li)
+  (cond ((null? li) (list))
+        ((null? (cdr li)) li)
+        (else (append (reverse (cdr li)) (list (car li))))))
+
+(define (iter-reverse li)
+  (define (iter left result)
+    (cond ((null? left) result)
+          (else (iter (cdr left) (cons (car left) result)))))
+  (iter li (list)))
