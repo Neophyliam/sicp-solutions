@@ -1,0 +1,32 @@
+(define rand
+  (let ((x 8746585))
+    (define (rand-update init)
+      (remainder (+ (* 847229221 x) 9991223321) 4294967296))
+    (define (generate)
+      (set! x (rand-update x))
+      x)
+    (define (reset new-x)
+      (set! x new-x))
+    (define (dispatch symbol)
+      (cond ((eq? symbol 'generate) (generate))
+            ((eq? symbol 'reset) reset)
+            (else (error "Unknown request -- RAND" symbol))))
+    dispatch))
+
+
+;; test
+(define (println x)
+  (display x)
+  (newline))
+
+(println (rand 'generate))
+(println "------------")
+((rand 'reset) 0)
+(println (rand 'generate))
+(println (rand 'generate))
+(println (rand 'generate))
+(println "------------")
+((rand 'reset) 0)
+(println (rand 'generate))
+(println (rand 'generate))
+(println (rand 'generate))
