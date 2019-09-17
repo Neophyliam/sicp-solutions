@@ -61,11 +61,13 @@
 
 ;; test
 (define q1 (make-queue))
-(println (insert-queue! q1 'a))
+(insert-queue! q1 'a)
 (print-queue q1)
-(println (insert-queue! q1 'b))
+(insert-queue! q1 'b)
 (print-queue q1)
-(println (delete-queue! q1))
+(delete-queue! q1)
 (print-queue q1)
-(println (delete-queue! q1))
+(delete-queue! q1)
+(print-queue q1)
+(insert-queue! q1 'b)
 (print-queue q1)
